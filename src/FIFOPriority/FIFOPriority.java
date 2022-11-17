@@ -7,7 +7,10 @@ import java.util.List;
 public class FIFOPriority {
     private final List<FIFOElement> values = new ArrayList<>();
 
-    public void push(String element, int priority){
+    public void push(String element, int priority) throws PriorityOutOfBoundsException {
+        if(priority<0 || priority>99){
+            throw new PriorityOutOfBoundsException("Priority has to be in range <0,99>: "+priority);
+        }
         this.values.add(new FIFOElement(element,priority));
     }
 
